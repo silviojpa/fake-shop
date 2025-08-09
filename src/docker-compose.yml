@@ -1,0 +1,41 @@
+    # Arquivo para orquestrar os containers da aplicação e do banco de dados localmente.
+    # Para iniciar, use o comando: docker-compose up --build
+    
+    version: '3.8'
+    
+    services:
+      # Serviço da aplicação web Flask
+      fakeshop:
+        build: . # Constrói a imagem a partir do Dockerfile na pasta atual
+        container_name: fakeshop_app
+        ports:
+          - "5000:5000" # Mapeia a porta 5000 do container para a porta 5000 da sua máquina
+        environment:
+          # Variáveis de ambiente que a aplicação precisa para conectar ao banco
+          - DB_HOST=postgre
+          - DB_USER=fakeshop
+          - DB_PASSWORD=Pg1234
+          - DB_NAME=fakeshop
+          - FLASK_APP=index.py
+        depends_on:
+          - postgre # Garante que o container do banco de dados inicie antes da aplicação
+    
+      # Serviço do banco de dados PostgreSQL
+      postgre:
+        image: postgres:13.6 # Usa a mesma versão do seu deployment.yaml
+        container_name: postgre_db
+        environment:
+          # Credenciais para o banco de dados ser criado na inicialização
+          - POSTGRES_DB=fakeshop
+          - POSTGRES_USER=fakeshop
+          - POSTGRES_PASSWORD=Pg1234
+        volumes:
+          - postgres_data:/var/lib/postgresql/data # Garante que os dados do banco não se percam
+        ports:
+          - "5432:5432" # Expõe a porta do banco para podermos acessá-lo de fora, se necessário
+    
+    # Volume para persistir os dados do banco de dados
+    volumes:
+      postgres_data:
+    
+    
