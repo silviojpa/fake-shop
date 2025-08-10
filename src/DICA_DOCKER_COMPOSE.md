@@ -1,4 +1,4 @@
-💡 Dica Rápida: Rodando o Projeto com Docker Compose
+###💡 Dica Rápida: Rodando o Projeto com Docker Compose
 Para desenvolvimento local, a forma mais simples e prática de executar este projeto é usando o Docker Compose. Ele orquestra todos os serviços necessários (a aplicação e o banco de dados) com um único comando, criando um ambiente consistente e isolado.
 
 Por que usar Docker Compose?
