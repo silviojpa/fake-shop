@@ -1,3 +1,6 @@
+##Obs: Baixe o arquivo "Fake Shop - Guia Interativo.html" e execute para vizualizar no seu browser para entender como subir a aplicação via docker-compose.
+
+
 # Fake Shop
 
 
@@ -68,42 +71,3 @@ docker-compose down
 Se quiser apagar também o volume do banco de dados (todos os dados serão perdidos), use:
 
 docker-compose down -v
-
-⚙️ Variáveis de Ambiente
-As variáveis de ambiente são gerenciadas diretamente no arquivo docker-compose.yml para o ambiente de desenvolvimento.
-
-Variável
-
-Descrição
-
-Valor Padrão
-
-DB_HOST
-
-Host do banco de dados PostgreSQL.
-
-postgre
-
-DB_USER
-
-Nome de usuário do banco.
-
-fakeshop
-
-DB_PASSWORD
-
-Senha do banco de dados.
-
-Pg1234
-
-DB_NAME
-
-Nome do banco de dados.
-
-fakeshop
-
-FLASK_APP
-
-Arquivo principal da aplicação Flask.
-
-index.py
